@@ -17,4 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('hospitals','HospitalController');
+Route::PATCH('store_hospital_score/{$id}','HospitalController@store_hospital_scores')->name('hospitals.store_score');

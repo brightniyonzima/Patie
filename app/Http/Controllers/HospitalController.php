@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HealthUnit;
+use DB;
 
 class HospitalController extends Controller
 {
@@ -13,7 +15,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //list hospitals with name,location,and marks :PS:edit and delete buttons
+        $hospitals = HealthUnit::all();
+        return view('hospitals.index',compact('hospitals'));
     }
 
     /**
@@ -23,7 +26,8 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        $districts = DB::table('districts')->orderBy('name','asc')->pluck('name','id')->toArray();
+        return view('hospitals.create',compact('districts'));
     }
 
     /**
@@ -34,7 +38,7 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -45,7 +49,8 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
-        //
+        $hospital = HealthUnit::findOrFail($id);
+        return view('hospitals.show',compact('hospital'));
     }
 
     /**
@@ -56,7 +61,8 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $districts = DB::table('districts')->pluck('id','name')->toArray();
+        return view('hospitals.edit',compact('districts'));
     }
 
     /**
@@ -80,5 +86,10 @@ class HospitalController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /*save the parameter scroes of that hospital*/
+    public function store_hospital_scores(Request $request,$id)
+    {
+        dd('readin to store scores for hospital '.$id);
     }
 }

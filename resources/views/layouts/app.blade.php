@@ -76,6 +76,23 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+    <script src="/js/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/js/typeahead.bundle.js"></script>
+    <script src="/js/js/select2.min.js"></script>
+    <script type="text/javascript" src="/js/js/datatables.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            /*call datatable plugin*/
+            $('#patie-data-table').DataTable({
+                "searching": true
+            });
+            $('#view_hospitals').click(function(e){
+                e.preventDefault();
+                $('#hospital_results').show();
+            })
+        });
+    </script>
 </body>
 </html>

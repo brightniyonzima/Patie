@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->date("date_of_birth")->nullable();
+            $table->string("district");
             $table->smallInteger("gender")->comment("1 = Male , 2 = Female , 3 = Other")->nullable();
             $table->smallInteger("marital_status")->comment("1=single, 2=Married, 3=Divorced, 4=Other")->nullable();
             $table->boolean("screened_before")->comment("0 = No , 1 = Yes")->nullable();
