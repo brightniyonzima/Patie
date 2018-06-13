@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-4 control-label">Location</label>
+                            <label for="location" class="col-md-4 control-label">District</label>
 
                             <div class="col-md-6">
                                 <!-- <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required autofocus> -->

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><label class="btn-danger">&nbsp;&nbsp;&nbsp;Select a location where you would like to do your screening from to see nearby hospitals&nbsp;&nbsp;&nbsp;</label></div>
+                <div class="panel-heading"><label class="btn-danger">&nbsp;&nbsp;&nbsp;Select a location where you would like to do your screening from to see the best nearby hospitals&nbsp;&nbsp;&nbsp;</label></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -16,15 +16,29 @@
                     <form class="form-horizontal">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-6 control-label">From where would you like to do screening? </label>
+                        <div class="form-group{{ $errors->has('current_location') ? ' has-error' : '' }}">
+                            <label for="current_location" class="col-md-6 control-label">Select your current current Location </label>
 
                             <div class="col-md-4">
-                                {{ Form::select('location',$districts,'',['class' => 'form-control','id' => 'location']) }}
+                                {{ Form::select('current_location',$districts,'',['class' => 'form-control','id' => 'current_location']) }}
 
-                                @if ($errors->has('location'))
+                                @if ($errors->has('current_location'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('location') }}</strong>
+                                        <strong>{{ $errors->first('current_location') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div> 
+
+                        <div class="form-group{{ $errors->has('destination_location') ? ' has-error' : '' }}">
+                            <label for="destination_location" class="col-md-6 control-label">Select where you would like to do screening? </label>
+
+                            <div class="col-md-4">
+                                {{ Form::select('destination_location',$districts,'',['class' => 'form-control','id' => 'destination_location']) }}
+
+                                @if ($errors->has('destination_location'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('destination_location') }}</strong>
                                     </span>
                                 @endif
                             </div>

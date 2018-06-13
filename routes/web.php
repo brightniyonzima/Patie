@@ -24,4 +24,4 @@ Route::get('/dashboard', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('hospitals','HospitalController');
-Route::PATCH('store_hospital_score/{$id}','HospitalController@store_hospital_scores')->name('hospitals.store_score');
+Route::post('store_hospital_score','HospitalController@store_hospital_scores')->name('store_score');

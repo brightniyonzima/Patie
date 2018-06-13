@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Patients;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,7 +49,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,8 +62,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $patient = new Patients;
+        $patient->first_name = $data['first_name'];
+        $patient->last_name = $data['last_name'];
+        $patient->date_of_birth = formatShuriDateFormat($data['dobday'],$data['dobmonth'],$data['dobyear']);
+        $patient->district = $data['location'];
+        $patient->gender = $data['gender'];
+        $patient->marital_status = $data['marital_status'];
+        $patient->screened_before = $data['screened_before'];
+        $patient->save();
+
+        $name = $data['first_name'].$data['last_name'];
         return User::create([
-            'name' => $data['name'],
+            'name' => $name,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

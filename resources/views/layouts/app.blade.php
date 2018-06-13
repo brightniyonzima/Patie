@@ -29,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -49,7 +49,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <span class="caret" id="caret-user"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -77,9 +77,8 @@
 
     <!-- Scripts -->
     <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
-    <script src="/js/js/jquery-3.2.1.min.js"></script>
-    <script src="/js/js/typeahead.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/datatables.min.css">
+    <script src="/js/js/jquery3.2.1.min.js"></script>
     <script src="/js/js/select2.min.js"></script>
     <script type="text/javascript" src="/js/js/datatables.min.js"></script>
     <script type="text/javascript">
@@ -91,7 +90,11 @@
             $('#view_hospitals').click(function(e){
                 e.preventDefault();
                 $('#hospital_results').show();
-            })
+            });
+            $('#caret-user').click(function(e){
+                e.preventDefault();
+                $('.dropdown-menu').show();
+            });
         });
     </script>
 </body>

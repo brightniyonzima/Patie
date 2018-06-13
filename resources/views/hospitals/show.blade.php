@@ -31,16 +31,26 @@
 
     <div class="container profiles">
         <article class="box" style="padding: 1em;">
-            <h4>Enter Parameter scores for <font color="blue">{{ $hospital->name }}</font> that will be used to calculate its Cost Effectiveness using <strong>CECCSTA</strong><small> (<font color="red">Note:</font>score should be between 0-5)</small></h4>
+            <h4 style="padding-left: 50px;">Enter Parameter scores for <font color="blue">{{ $hospital->name }}</font> that will be used to calculate its Cost Effectiveness using <strong>CECCSTA</strong></h4>
             <div class="row" style="padding-top: 15px">
-	            {{ Form::model($hospital, ['method' => 'PATCH', 'url' => ['store_hospital_score',$hospital->id],'class'=>'form-horizontal']) }}
+	            <form class="form-horizontal" method="POST" action="{{ route('store_score') }}">
 	                {{ csrf_field() }}
+	                <input type="hidden" name="hospital_id" value="{{ $hospital->id }}" hidden>
 	                <div class="col-md-8 col-md-offset-2">
-	                    <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
-	                        <label for="time" class="col-md-4 control-label">Time Spent Waiting</label>
+	                    <div class="form-group{{ $errors->has('time_waiting') ? ' has-error' : '' }}">
+	                        <label for="time_waiting" class="col-md-4 control-label">Time Spent Waiting</label>
 
 	                        <div class="col-md-6">
-	                            <input id="time" type="number" class="form-control" name="time" value="{{ old('time') }}" required autofocus>
+	                            <!-- <input id="time" type="number" class="form-control" name="time" value="{{ old('time') }}" required autofocus> -->
+	                            <select class="form-control" name="time_waiting" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> 1-30 mins</option>
+	                            	<option value="4"> 31-60 mins</option>
+	                            	<option value="3"> 61-120 mins</option>
+	                            	<option value="2"> 121-180 mins</option>
+	                            	<option value="1"> 181-240 mins</option>
+	                            	<option value="0"> >240 mins</option>
+	                            </select>
 
 	                            @if ($errors->has('time'))
 	                                <span class="help-block">
@@ -54,7 +64,16 @@
 	                        <label for="cost_of_service" class="col-md-4 control-label">Cost of Service</label>
 
 	                        <div class="col-md-6">
-	                            <input id="cost_of_service" type="number" class="form-control" name="cost_of_service" value="{{ old('cost_of_service') }}" required autofocus>
+	                            <!-- <input id="cost_of_service" type="number" class="form-control" name="cost_of_service" value="{{ old('cost_of_service') }}" required autofocus> -->
+	                            <select class="form-control" name="cost_of_service" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> < 0 Shs</option>
+	                            	<option value="4"> 1-100,000 Shs</option>
+	                            	<option value="3"> 110,000-200,000 Shs</option>
+	                            	<option value="2"> 210,000-300,000 Shs</option>
+	                            	<option value="1"> 310,000-400,000 Shs</option>
+	                            	<option value="0"> >=410,000 Shs</option>
+	                            </select>
 
 	                            @if ($errors->has('cost_of_service'))
 	                                <span class="help-block">
@@ -68,7 +87,16 @@
 	                        <label for="number_of_treatment_methods" class="col-md-4 control-label">Treatment Methods Used</label>
 
 	                        <div class="col-md-6">
-	                            <input id="number_of_treatment_methods" type="number" class="form-control" name="number_of_treatment_methods" value="{{ old('number_of_treatment_methods') }}" required autofocus>
+	                            <!-- <input id="number_of_treatment_methods" type="number" class="form-control" name="number_of_treatment_methods" value="{{ old('number_of_treatment_methods') }}" required autofocus> -->
+	                            <select class="form-control" name="number_of_treatment_methods" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('number_of_treatment_methods'))
 	                                <span class="help-block">
@@ -82,7 +110,16 @@
 	                        <label for="user_fee" class="col-md-4 control-label">User Fee</label>
 
 	                        <div class="col-md-6">
-	                            <input id="user_fee" type="number" class="form-control" name="user_fee" value="{{ old('user_fee') }}" required autofocus>
+	                            <!-- <input id="user_fee" type="number" class="form-control" name="user_fee" value="{{ old('user_fee') }}" required autofocus> -->
+	                            <select class="form-control" name="user_fee" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> < 0 Shs</option>
+	                            	<option value="4"> 1-5000 Shs</option>
+	                            	<option value="3"> 5001-20000 Shs</option>
+	                            	<option value="2"> 20001-35000 Shs</option>
+	                            	<option value="1"> 35001-50000 Shs</option>
+	                            	<option value="0"> >50000 Shs</option>
+	                            </select>
 
 	                            @if ($errors->has('user_fee'))
 	                                <span class="help-block">
@@ -96,7 +133,16 @@
 	                        <label for="trained_manpower" class="col-md-4 control-label">Trained Man power</label>
 
 	                        <div class="col-md-6">
-	                            <input id="trained_manpower" type="number" class="form-control" name="trained_manpower" value="{{ old('trained_manpower') }}" required autofocus>
+	                            <!-- <input id="trained_manpower" type="number" class="form-control" name="trained_manpower" value="{{ old('trained_manpower') }}" required autofocus> -->
+	                            <select class="form-control" name="trained_manpower" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('trained_manpower'))
 	                                <span class="help-block">
@@ -110,7 +156,16 @@
 	                        <label for="screening_tools_available" class="col-md-4 control-label">Screening Tools Available</label>
 
 	                        <div class="col-md-6">
-	                            <input id="screening_tools_available" type="number" class="form-control" name="screening_tools_available" value="{{ old('screening_tools_available') }}" required autofocus>
+	                            <!-- <input id="screening_tools_available" type="number" class="form-control" name="screening_tools_available" value="{{ old('screening_tools_available') }}" required autofocus> -->
+	                            <select class="form-control" name="screening_tools_available" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('screening_tools_available'))
 	                                <span class="help-block">
@@ -124,7 +179,16 @@
 	                        <label for="screening_tools_in_use" class="col-md-4 control-label">Screening Tools in Use</label>
 
 	                        <div class="col-md-6">
-	                            <input id="screening_tools_in_use" type="number" class="form-control" name="screening_tools_in_use" value="{{ old('screening_tools_in_use') }}" required autofocus>
+	                            <!-- <input id="screening_tools_in_use" type="number" class="form-control" name="screening_tools_in_use" value="{{ old('screening_tools_in_use') }}" required autofocus> -->
+	                            <select class="form-control" name="screening_tools_in_use" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('screening_tools_in_use'))
 	                                <span class="help-block">
@@ -138,7 +202,16 @@
 	                        <label for="testing_equipment_available" class="col-md-4 control-label">Testing Equipment Available</label>
 
 	                        <div class="col-md-6">
-	                            <input id="testing_equipment_available" type="number" class="form-control" name="testing_equipment_available" value="{{ old('testing_equipment_available') }}" required autofocus>
+	                            <!-- <input id="testing_equipment_available" type="number" class="form-control" name="testing_equipment_available" value="{{ old('testing_equipment_available') }}" required autofocus> -->
+	                            <select class="form-control" name="testing_equipment_available" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('testing_equipment_available'))
 	                                <span class="help-block">
@@ -152,7 +225,16 @@
 	                        <label for="testing_equipment_in_use" class="col-md-4 control-label">Testing Equipment in Use</label>
 
 	                        <div class="col-md-6">
-	                            <input id="testing_equipment_in_use" type="number" class="form-control" name="testing_equipment_in_use" value="{{ old('testing_equipment_in_use') }}" required autofocus>
+	                            <!-- <input id="testing_equipment_in_use" type="number" class="form-control" name="testing_equipment_in_use" value="{{ old('testing_equipment_in_use') }}" required autofocus> -->
+	                            <select class="form-control" name="testing_equipment_in_use" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('testing_equipment_in_use'))
 	                                <span class="help-block">
@@ -166,7 +248,16 @@
 	                        <label for="treatment_equipment_available" class="col-md-4 control-label">Treatment Equipment Available</label>
 
 	                        <div class="col-md-6">
-	                            <input id="treatment_equipment_available" type="number" class="form-control" name="treatment_equipment_available" value="{{ old('treatment_equipment_available') }}" required autofocus>
+	                            <!-- <input id="treatment_equipment_available" type="number" class="form-control" name="treatment_equipment_available" value="{{ old('treatment_equipment_available') }}" required autofocus> -->
+	                            <select class="form-control" name="treatment_equipment_available" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('treatment_equipment_available'))
 	                                <span class="help-block">
@@ -180,7 +271,16 @@
 	                        <label for="treatment_equipment_in_use" class="col-md-4 control-label">Treatment Equipment in Use</label>
 
 	                        <div class="col-md-6">
-	                            <input id="treatment_equipment_in_use" type="number" class="form-control" name="treatment_equipment_in_use" value="{{ old('treatment_equipment_in_use') }}" required autofocus>
+	                            <!-- <input id="treatment_equipment_in_use" type="number" class="form-control" name="treatment_equipment_in_use" value="{{ old('treatment_equipment_in_use') }}" required autofocus> -->
+	                            <select class="form-control" name="treatment_equipment_in_use" required>
+	                            	<option value="">--select--</option>
+	                            	<option value="5"> >= 80% </option>
+	                            	<option value="4"> 61-80%</option>
+	                            	<option value="3"> 41-60%</option>
+	                            	<option value="2"> 20-40%</option>
+	                            	<option value="1"> 1-20%</option>
+	                            	<option value="0"> <= 0%</option>
+	                            </select>
 
 	                            @if ($errors->has('treatment_equipment_in_use'))
 	                                <span class="help-block">
@@ -194,7 +294,11 @@
 	                        <label for="counselling_services" class="col-md-4 control-label">Counselling Services</label>
 
 	                        <div class="col-md-6">
-	                            <input id="counselling_services" type="number" class="form-control" name="counselling_services" value="{{ old('counselling_services') }}" required autofocus>
+	                            <!-- <input id="counselling_services" type="number" class="form-control" name="counselling_services" value="{{ old('counselling_services') }}" required autofocus> -->
+	                            <div style="padding-top: 5px;">
+	                            <input type="radio" name="counselling_services" value="5" required>Yes &nbsp;
+                                <input type="radio" name="counselling_services" value="0" required>No
+                                </div>
 
 	                            @if ($errors->has('counselling_services'))
 	                                <span class="help-block">
@@ -208,7 +312,11 @@
 	                        <label for="patient_follow_up" class="col-md-4 control-label">Patient Follow Up</label>
 
 	                        <div class="col-md-6">
-	                            <input id="patient_follow_up" type="number" class="form-control" name="patient_follow_up" value="{{ old('patient_follow_up') }}" required autofocus>
+	                            <!-- <input id="patient_follow_up" type="number" class="form-control" name="patient_follow_up" value="{{ old('patient_follow_up') }}" required autofocus> -->
+	                            <div style="padding-top: 5px;">
+	                            <input type="radio" name="patient_follow_up" value="5" required>Yes &nbsp;
+                                <input type="radio" name="patient_follow_up" value="0" required>No
+                                </div>
 
 	                            @if ($errors->has('patient_follow_up'))
 	                                <span class="help-block">

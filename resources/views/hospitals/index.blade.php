@@ -17,10 +17,13 @@
 				@foreach($hospitals as $hospital)
 				<tr>
 					<td>{{ $hospital->name }}</td>
-					<td>{{ $hospital->location }}</td>
+					<td>{{ get_district_name($hospital->location) }}</td>
 					<td> {{ get_region($hospital->location) }} </td>
 					<td align="center">
-						<div class="btn-group">
+					    <a action="edit" class="btn btn-default" href="/hospitals/{{ $hospital->id }}/"><span class="glyphicon glyphicon-pencil pull-left">&nbsp;</span>Enter Parameter Scores</a>
+					    <a action="edit" class="btn btn-primary" href="/hospitals/{{ $hospital->id }}/edit"><span class="glyphicon glyphicon-pencil pull-left">&nbsp;</span>Edit</a>
+					    <a action="delete" class="btn btn-danger" href="#"><span class="glyphicon glyphicon-remove pull-left">&nbsp;</span>Delete</a>
+						<!-- <div class="btn-group">
 							<button type="button" 
 									class="btn btn-primary btn-xs dropdown-toggle"
 									style="font-size: 1.1em; float:right" 
@@ -33,7 +36,7 @@
 								<li class="divider"></li>
 								<li><a 	action="delete"	worksheet="id"	href="#"><span class="glyphicon glyphicon-remove pull-left" style="color:red;" >&nbsp;</span>Delete</a></li>
 							</ul>
-						<div class="btn-group">
+						<div class="btn-group"> -->
 					</td>
 				</tr>
 				@endforeach
