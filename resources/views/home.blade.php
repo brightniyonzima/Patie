@@ -13,14 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="{{ url('/send_locations') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('current_location') ? ' has-error' : '' }}">
                             <label for="current_location" class="col-md-6 control-label">Select your current current Location </label>
 
                             <div class="col-md-4">
-                                {{ Form::select('current_location',$districts,'',['class' => 'form-control','id' => 'current_location']) }}
+                                {{ Form::select('current_location',$districts,'',['class' => 'form-control','id' => 'current_location','required'=>'true']) }}
 
                                 @if ($errors->has('current_location'))
                                     <span class="help-block">
@@ -34,7 +34,7 @@
                             <label for="destination_location" class="col-md-6 control-label">Select where you would like to do screening? </label>
 
                             <div class="col-md-4">
-                                {{ Form::select('destination_location',$districts,'',['class' => 'form-control','id' => 'destination_location']) }}
+                                {{ Form::select('destination_location',$districts,'',['class' => 'form-control','id' => 'destination_location','required'=>'true']) }}
 
                                 @if ($errors->has('destination_location'))
                                     <span class="help-block">
@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-6">
-                                <button type="submit" class="btn btn-primary" id="view_hospitals">
+                                <button type="submit" class="btn btn-primary">
                                     View Hospitals
                                 </button>
                             </div>

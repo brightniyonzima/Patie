@@ -3,12 +3,13 @@
 
 <div class="container">
 	<div>
-	    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for hospitals..">
+	    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for hospital..">
 
 	    <table  class="display" id="patie-data-table">
 	        <tr style="background-color: #eee">
 				<th style="width: 30%"><small>Hospital Name</small></th>
 				<th style="width: 30%"><small>District</small></th>
+				<th style="width: 20%"><small style="color: #3097d1;;">CCECSTA Score</small></th>
 				<th></th>
 			</tr>
 
@@ -17,11 +18,8 @@
 				<tr>
 					<td>{{ $hospital->name }}</td>
 					<td>{{ get_district_name($hospital->location) }}</td>
-					<td align="right">
-					    @if(check_if_hospital_is_rated($hospital->id))
-						    <a action="edit" class="btn btn-default" href="/hospitals/{{ $hospital->id }}/"><span class="glyphicon glyphicon-pencil pull-left">&nbsp;</span>Enter Parameter Scores</a>
-						@endif
-					    <a action="edit" class="btn btn-primary" href="/hospitals/{{ $hospital->id }}/edit"><span class="glyphicon glyphicon-pencil pull-left">&nbsp;</span>Edit</a>
+					<td style="color: #3097d1;">{{ calculate_single_hospital_point($hospital->id) }}</td>
+					<td align="center">
 					    <a action="delete" class="btn btn-danger" href="/hospitals/{{ $hospital->id }}/delete"><span class="pull-left">&nbsp;</span>Delete</a>
 					</td>
 				</tr>

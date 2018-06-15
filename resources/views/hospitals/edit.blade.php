@@ -8,7 +8,7 @@
                 <div class="panel-heading">Register a new hospital</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="PUT" action="{{ route('hospitals.update') }}">
+                    {{ Form::model($hospital, ['method' => 'PUT', 'route' => ['hospitals.update',$hospital], 'class' => 'form-horizontal']) }}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -53,3 +53,13 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+    var hospital = {!! json_encode($hospital) !!};
+    var districts = {!! json_encode($districts) !!};
+    console.log(hospital);
+    window.onload = function(){
+        document.getElementById('name').value = hospital.name;
+        document.getElementById('location').value = hospital.location
+    }
+</script>
+

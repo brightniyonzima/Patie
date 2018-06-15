@@ -9,6 +9,10 @@ use DB;
 
 class HospitalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospitals = HealthUnit::all();
+        $hospitals = HealthUnit::orderBy('name','asc')->get();
         return view('hospitals.index',compact('hospitals'));
     }
 
@@ -67,8 +71,9 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        $districts = DB::table('districts')->pluck('id','name')->toArray();
-        return view('hospitals.edit',compact('districts'));
+        $districts = DB::table('districts')->pluck('name','id')->toArray();
+        $hospital = HealthUnit::findOrFail($id);
+        return view('hospitals.edit',compact('hospital','districts'));
     }
 
     /**
@@ -80,7 +85,13 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hospital = HealthUnit::findOrFail($id);
+        $hospital->name = $request->name;
+        $hospital->location = $request->location;
+        if($hospital->update()){
+            return redirect('/hospitals');
+        }
+        return back()->withErrors($validator)->withInput();
     }
 
     /**
@@ -91,12 +102,12 @@ class HospitalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hospital = HealthUnit::destroy($id);
+        return redirect('hospitals');
     }
     /*save the parameter scroes of that hospital*/
     public function store_hospital_scores(Request $request)
     {
-        //dd($request->all());
         $hospital_score = new HospitalParameterScore;
         $hospital_score->hospital_id = $request->hospital_id;
         $hospital_score->time_waiting = $request->time_waiting;
@@ -117,5 +128,29 @@ class HospitalController extends Controller
             return redirect('hospitals');
         }
         return back()->withErrors($validator)->withInput();
+    }
+    /*
+    send user location and preferred screening location
+    */
+    public function send_locations(Request $request)
+    {
+        $current_location = $request->current_location;
+        $preferred_screening_location = $request->destination_location;
+
+        $hospitals_in_preferred_area = HealthUnit::where(['location'=>$preferred_screening_location])->get();
+        $hospitals_in_current_area = HealthUnit::where(['location'=>$current_location])->get();        
+        //1.select all hospitals in the preferred area e.g HealthUnit::where(['location'=>preferred_location]) list them in score order
+        //2.add distance points in accordance with how far from the current location e.g if same dist=5,sub_region=3
+        //3.suggest near by hospitals with a good score basing hospitals in that same district or sub region
+        //dd($hospitals_in_preferred_area);
+        return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','hospitals_in_current_area','current_location'));
+    }
+    /*
+    show ccecsta scores of a hospital
+    */
+    public function list_hospitals_ccecsta_scores()
+    {
+        $hospitals = HealthUnit::orderBy('name','asc')->get();
+        return view('hospitals.hospitals_ccecsta_results',compact('hospitals'));
     }
 }

@@ -32,6 +32,20 @@
                     <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    @if(Auth::user()->email == "brightniyonzima@gmail.com")
+                        <a class="navbar-brand" href="{{ url('/hospitals') }}" style="color: #3097d1;">
+                            <small>Hospitals</small>
+                        </a>
+                        <a class="navbar-brand" href="{{ url('/hospitals') }}" style="color: #3097d1;">
+                            <small>Add hospital</small>
+                        </a>
+                        <a class="navbar-brand" href="{{ url('/patients') }}" style="color: #3097d1;">
+                            <small>Patients</small>
+                        </a>
+                        <a class="navbar-brand" href="{{ url('/hospital_scores') }}" style="color: #3097d1">
+                            <small>Scores</small>
+                        </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -85,6 +99,9 @@
         jQuery(document).ready(function($) {
             /*call datatable plugin*/
             $('#patie-data-table').DataTable({
+                "searching": true
+            });
+            $('#patie-data-table2').DataTable({
                 "searching": true
             });
             $('#view_hospitals').click(function(e){
