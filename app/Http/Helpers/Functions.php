@@ -34,10 +34,10 @@ function check_if_hospital_is_rated($hospital_id)
 {
     $hospital_score = HospitalParameterScore::where(['hospital_id' => $hospital_id])->first();
     if (is_null($hospital_score) || !isset($hospital_score->id)) {
-        return false;
+        return true;
     }
     else{
-        return true;
+        return false;
     }
 }
 
@@ -53,7 +53,7 @@ function calculate_single_hospital_point($hospital_id)
         }
         $number_of_params = count($weight_points);
         $ccecsta_score = array_sum($weight_points)/($number_of_params*5);
-        $ccecsta_score = round($ccecsta_score,2);
+        $ccecsta_score = round($ccecsta_score,1);
         return $ccecsta_score;
     }
     //1.select from hospital_parameter_scores where hospital_id=$hospital_id
