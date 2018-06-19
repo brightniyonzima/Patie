@@ -43,8 +43,8 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6" style="padding-top: 5px;">
-                                <input type="radio" name="gender" value="0" required>Male &nbsp;
-                                <input type="radio" name="gender" value="1" required>Female
+                                <input type="radio" name="gender" value="1" required>Male &nbsp;
+                                <input type="radio" name="gender" value="2" required>Female
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">
@@ -66,7 +66,7 @@
                                         {{ Form::selectMonth('dobmonth',Carbon\Carbon::now()->month,['placeholder' => '--Select Month--','class' => 'form-control'])}}
                                     </div>
                                     <div class="col-md-4">
-                                        {!! Form::selectYear('dobyear', date('Y'), 1915, [Carbon\Carbon::now()->year],['class'=>'form-control']) !!} 
+                                        {!! Form::selectYear('dobyear', date('Y'), 1915, 2002,['class'=>'form-control']) !!} 
                                     </div>
                                 </div> 
                                 @if ($errors->has('date_of_birth'))
@@ -99,8 +99,8 @@
                             <label for="location" class="col-md-4 control-label">District</label>
 
                             <div class="col-md-6">
-                                <!-- <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required autofocus> -->
-                                {{ Form::select('location',['1'=>'Mbarara','2'=>'Bushenyi'],'',['class' => 'form-control','id' => 'location']) }}
+                                <select class="form-control" id="location" name="location"><option value="19">Buhweju</option><option value="5">Bushenyi</option><option value="9">Isingiro</option><option value="3">Kabale</option><option value="32">Kabarole</option><option value="29">Kagadi</option><option value="11">Kamwenge</option><option value="30">kamwengye</option><option value="2">Kanungu</option><option value="8">Kibale</option><option value="13">Kirihura</option><option value="21">Kisoro</option><option value="20">Kyegegwa</option><option value="33">Kyenjojo</option><option value="4">Mbarara</option><option value="10">Mitooma</option><option value="6">Ntungamo</option><option value="12">Rubirizi</option><option value="1">Rukungiri</option><option value="14">Sheema</option></select>
+
 
                                 @if ($errors->has('location'))
                                     <span class="help-block">

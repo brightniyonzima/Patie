@@ -541,7 +541,7 @@
 			"file": "resources/views/layouts/app.blade.php",
 			"settings":
 			{
-				"buffer_size": 5082,
+				"buffer_size": 5547,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -550,7 +550,7 @@
 			"file": "app/Http/Helpers/Functions.php",
 			"settings":
 			{
-				"buffer_size": 2425,
+				"buffer_size": 2836,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -706,10 +706,10 @@
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/CER/resources/views/auth/register.blade.php",
 		"/C/wamp64/www/CER/app/Http/Helpers/Functions.php",
 		"/C/wamp64/www/CER/.env",
 		"/C/wamp64/www/CER/resources/views/hospitals/create.blade.php",
-		"/C/wamp64/www/CER/resources/views/auth/register.blade.php",
 		"/C/wamp64/www/CER/resources/views/auth/login.blade.php",
 		"/C/wamp64/www/CER/app/HealthUnit.php",
 		"/C/wamp64/www/CER/composer.json",
@@ -999,7 +999,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1066,15 +1066,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5082,
+						"buffer_size": 5547,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1544,
-								1544
+								1532,
+								1532
 							]
 						],
 						"settings":
@@ -1084,10 +1084,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1387.0,
+						"translation.y": 1282.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1096,15 +1096,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2425,
+						"buffer_size": 2836,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2042,
-								2042
+								2831,
+								2831
 							]
 						],
 						"settings":
@@ -1114,10 +1114,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1974.0,
+						"translation.y": 2478.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1473,6 +1473,10 @@
 		"selected_items":
 		[
 			[
+				"reg",
+				"resources\\views\\auth\\register.blade.php"
+			],
+			[
 				"",
 				"app\\Http\\Helpers\\Functions.php"
 			],
@@ -1627,10 +1631,6 @@
 			[
 				"create_us",
 				"database\\migrations\\2014_10_12_000000_create_users_table.php"
-			],
-			[
-				"reg",
-				"resources\\views\\auth\\register.blade.php"
 			],
 			[
 				"auth/lo",

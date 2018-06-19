@@ -29,21 +29,32 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                        <a class="navbar-brand" href="{{ url('/hospitals') }}" style="color: #3097d1;">
-                            <small>Hospitals</small>
+                    @guest
+                        <a class="navbar-brand" href="{{ url('/home') }}">
+                            {{ config('app.name', 'Laravel') }}
                         </a>
-                        <a class="navbar-brand" href="{{ url('/hospitals/create') }}" style="color: #3097d1;">
-                            <small>Add hospital</small>
-                        </a>
-                        <a class="navbar-brand" href="{{ url('/patients') }}" style="color: #3097d1;">
-                            <small>Patients</small>
-                        </a>
-                        <a class="navbar-brand" href="{{ url('/hospital_scores') }}" style="color: #3097d1">
-                            <small>Cost-effectiveness</small>
-                        </a>
+                    @else
+                        @if(Auth::user()->name == 'brightniyonzima' || Auth::user()->name == 'PatienceAmanya')
+                            <a class="navbar-brand" href="{{ url('/home') }}">
+                                {{ config('app.name', 'Laravel') }}
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/hospitals') }}" style="color: #3097d1;">
+                                <small>Hospitals</small>
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/hospitals/create') }}" style="color: #3097d1;">
+                                <small>Add hospital</small>
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/patients') }}" style="color: #3097d1;">
+                                <small>Patients</small>
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/hospital_scores') }}" style="color: #3097d1">
+                                <small>Cost-effectiveness</small>
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/ccecsta_results_column_graph') }}" target="_blank" style="color: #3097d1">
+                                <small>Cost-effectiveness Graph</small>
+                            </a>
+                        @endif
+                    @endguest
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

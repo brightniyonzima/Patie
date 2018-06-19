@@ -61,5 +61,11 @@ function calculate_single_hospital_point($hospital_id)
     //3.sum up value at stage 2 then divide that sum by count(params*5)
     //4.take note that distance isnt added here coz its not stored in the table and so its calculated on the fly
 }
-
+function add_distance_parameter($destination,$current)
+{
+    //if destination subregion == current subregion then distance will score 4
+    //if destination subregion(west_1) != current subregion(west_2) then distance will score be 3
+    //if destination subregion(west_1) != current subregion(west_3) then distance will score be 2  
+    //bordering districts of each different sub region can get a score of 5
+}
 ?>

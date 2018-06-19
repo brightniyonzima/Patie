@@ -18,7 +18,7 @@
                         	<div class="col-md-6" style="padding: 2rem;">
                         		<p class="customer-details">
                                     <strong>Hospital Name: </strong>{{ $hospital->name }} <br><br>
-                                    <strong>Location: </strong> {{ $hospital->location }}<br><br>
+                                    <strong>Location: </strong> {{ get_district_name($hospital->location) }}<br><br>
                                     <strong>Region: </strong>{{ get_region($hospital->location) }}
                                 </p>
                         	</div>

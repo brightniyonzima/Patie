@@ -60,7 +60,12 @@ class HospitalController extends Controller
     public function show($id)
     {
         $hospital = HealthUnit::findOrFail($id);
-        return view('hospitals.show',compact('hospital'));
+        $param_scores = HospitalParameterScore::where(['hospital_id'=>$id])->first();
+        if (is_null($param_scores)) {
+            return view('hospitals.show',compact('hospital'));
+        }
+        $param_scores = $param_scores->toArray();
+        return view('hospitals.show_hospital_details',compact('hospital','param_scores'));
     }
 
     /**
@@ -152,5 +157,20 @@ class HospitalController extends Controller
     {
         $hospitals = HealthUnit::orderBy('name','asc')->get();
         return view('hospitals.hospitals_ccecsta_results',compact('hospitals'));
+    }
+    /*
+     *show a grpah of all hospital score
+    */
+    public function show_ccecsta_column_graph()
+    {
+        $hospitals = HealthUnit::orderBy('name','asc')->get();
+        $hospitals_array = [];
+        $hospitals_score_array = [];
+        foreach ($hospitals as $hospital) {
+            $hospitals_array[] = $hospital->name;
+            $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
+        }
+        $total_students_females = [10,11,23,12,12,14];
+        return view('hospitals.ccecsta_results_column_graph',compact('hospitals_array','hospitals_score_array'));
     }
 }
