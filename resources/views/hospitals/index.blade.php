@@ -15,7 +15,7 @@
 			@if(!is_null($hospitals))
 				@foreach($hospitals as $hospital)
 				<tr>
-					<td>{{ $hospital->name }}</td>
+					<td><a href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }}</a></td>
 					<td>{{ get_district_name($hospital->location) }}</td>
 					<td align="right">
 					    @if(check_if_hospital_is_rated($hospital->id))
