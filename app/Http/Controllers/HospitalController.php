@@ -197,9 +197,10 @@ class HospitalController extends Controller
         $hospitals = HealthUnit::orderBy('name','asc')->get();
         $hospitals_array = [];
         $hospitals_score_array = [];
+        $data = [];
+        $hospital_data = [];
         foreach ($hospitals as $hospital) {
-            $hospitals_array[] = $hospital->name;
-            $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
+            $data[$hospital->name] = calculate_single_hospital_point($hospital->id);
         }
 
         return Excel::create('ccecsta-points', function($excel) use ($data) {

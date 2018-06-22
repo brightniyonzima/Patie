@@ -23,7 +23,7 @@
             text: 'Hospitals Cost Effectiveness'   
         };
         var subtitle = {
-            text: 'compiled by Patie system'  
+            text: 'compiled by Patie model'  
         };
         var xAxis = {
             categories: hospitals_array,

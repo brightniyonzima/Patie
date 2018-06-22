@@ -23,7 +23,7 @@
             text: 'Average Hospital Cost Effectiveness Per District'   
         };
         var subtitle = {
-            text: 'compiled by Patie system'  
+            text: 'compiled by Patie model'  
         };
         var xAxis = {
             categories: districts_array,
