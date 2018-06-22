@@ -84,7 +84,7 @@
 	                    </div>
 
 	                    <div class="form-group{{ $errors->has('number_of_treatment_methods') ? ' has-error' : '' }}">
-	                        <label for="number_of_treatment_methods" class="col-md-4 control-label">Treatment Methods Used</label>
+	                        <label for="number_of_treatment_methods" class="col-md-4 control-label">Number of Screening Methods Used</label>
 
 	                        <div class="col-md-6">
 	                            <!-- <input id="number_of_treatment_methods" type="number" class="form-control" name="number_of_treatment_methods" value="{{ old('number_of_treatment_methods') }}" required autofocus> -->
