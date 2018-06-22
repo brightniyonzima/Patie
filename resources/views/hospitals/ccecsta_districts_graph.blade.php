@@ -5,28 +5,28 @@
     <script src="/js/js/exporting.js"></script>
 </head>
 <body>
-    <ol>
+    <!-- <ol>
         <li>
             <a href="/districts_graph" target="_blank">Districts Perfomance</a>
         </li>
-    </ol>
+    </ol> -->
     <div id="container" style="width: 550px; height: 400px; margin: 0 auto; margin-top: 80px;"></div>
     <script language="JavaScript">
     $(document).ready(function() {  
-        var hospitals_array = {!! json_encode($hospitals_array) !!} ;
+        var districts_array = {!! json_encode($districts_array) !!} ;
         var hospitals_score_array = {!! json_encode($hospitals_score_array) !!} ;
 
         var chart = {
             type: 'column'
         };
         var title = {
-            text: 'Hospitals Cost Effectiveness'   
+            text: 'Average Hospital Cost Effectiveness Per District'   
         };
         var subtitle = {
             text: 'compiled by Patie system'  
         };
         var xAxis = {
-            categories: hospitals_array,
+            categories: districts_array,
             crosshair: true
         };
         var yAxis = {

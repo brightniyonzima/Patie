@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"calc",
+				"calculate_single_hospital_point"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"para",
+				"param_scores"
+			],
+			[
+				"par",
+				"param_scores"
+			],
+			[
+				"pr",
+				"param_scores"
+			],
+			[
+				"nu",
+				"null"
+			],
+			[
+				"pra",
+				"parameter"
+			],
+			[
+				"H",
+				"HospitalParameterScore"
+			],
+			[
+				"la",
+				"label-danger"
+			],
+			[
+				"lab",
+				"label"
+			],
+			[
+				"hso",
+				"hospitals_score_array"
+			],
+			[
+				"ho",
+				"hospital_array"
+			],
+			[
+				"hosp",
+				"hospital"
+			],
+			[
+				"hs",
+				"hospitals"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"to",
+				"total_students_females"
+			],
+			[
+				"tot",
+				"total_students_males"
+			],
+			[
+				"clas",
+				"classes"
+			],
+			[
 				"col",
 				"color"
 			],
@@ -22,10 +94,6 @@
 			[
 				"pad",
 				"padding"
-			],
-			[
-				"hosp",
-				"hospitals"
 			],
 			[
 				"curr",
@@ -52,14 +120,6 @@
 				"is_null"
 			],
 			[
-				"ho",
-				"hospitals"
-			],
-			[
-				"hso",
-				"hospital"
-			],
-			[
 				"get",
 				"getElementById"
 			],
@@ -76,18 +136,6 @@
 				"i"
 			],
 			[
-				"for",
-				"for\tfor …"
-			],
-			[
-				"to",
-				"toArray"
-			],
-			[
-				"par",
-				"param_point"
-			],
-			[
 				"h",
 				"hospital_param_points"
 			],
@@ -98,10 +146,6 @@
 			[
 				"ce",
 				"ccecsta_score"
-			],
-			[
-				"nu",
-				"number_of_parameters"
 			],
 			[
 				"weig",
@@ -470,50 +514,6 @@
 			[
 				"con",
 				"contract"
-			],
-			[
-				"var",
-				"var_dump"
-			],
-			[
-				"ignorec",
-				"ignoreCustomerArray"
-			],
-			[
-				"Credit",
-				"CreditApplicationStatus"
-			],
-			[
-				"co",
-				"console"
-			],
-			[
-				"ext",
-				"extractedloanaccount"
-			],
-			[
-				"acc",
-				"accountNumber"
-			],
-			[
-				"extr",
-				"extractedODaccount"
-			],
-			[
-				"json",
-				"json_encode"
-			],
-			[
-				"jso",
-				"json_encode"
-			],
-			[
-				"loan",
-				"loanaccountnumber"
-			],
-			[
-				"new",
-				"newCreditReferenceNumber"
 			]
 		]
 	},
@@ -523,16 +523,7 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 1026,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/PatientsController.php",
-			"settings":
-			{
-				"buffer_size": 1651,
+				"buffer_size": 1117,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,8 +532,16 @@
 			"file": "resources/views/layouts/app.blade.php",
 			"settings":
 			{
-				"buffer_size": 5547,
+				"buffer_size": 5794,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Auth/RegisterController.php",
+			"settings":
+			{
+				"buffer_size": 2319,
 				"line_ending": "Unix"
 			}
 		},
@@ -550,7 +549,7 @@
 			"file": "app/Http/Helpers/Functions.php",
 			"settings":
 			{
-				"buffer_size": 2836,
+				"buffer_size": 2934,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -586,7 +585,7 @@
 			"file": "app/Http/Controllers/HospitalController.php",
 			"settings":
 			{
-				"buffer_size": 5614,
+				"buffer_size": 6499,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -595,16 +594,7 @@
 			"file": "resources/views/hospitals/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 2538,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/patients/index.blade.php",
-			"settings":
-			{
-				"buffer_size": 3254,
+				"buffer_size": 2583,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -613,16 +603,16 @@
 			"file": "resources/views/hospitals/hospitals_in_area.blade.php",
 			"settings":
 			{
-				"buffer_size": 4742,
+				"buffer_size": 6377,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/hospitals/hospitals_ccecsta_results.blade.php",
+			"file": "resources/views/hospitals/ccecsta_results_column_graph.blade.php",
 			"settings":
 			{
-				"buffer_size": 2299,
+				"buffer_size": 2240,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -640,7 +630,16 @@
 			"file": "resources/views/hospitals/show.blade.php",
 			"settings":
 			{
-				"buffer_size": 23344,
+				"buffer_size": 23363,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/hospitals/show_hospital_details.blade.php",
+			"settings":
+			{
+				"buffer_size": 4014,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -701,12 +700,15 @@
 	"expanded_folders":
 	[
 		"/C/wamp64/www/CER",
-		"/C/wamp64/www/CER/resources",
-		"/C/wamp64/www/CER/resources/views"
+		"/C/wamp64/www/CER/database",
+		"/C/wamp64/www/CER/database/seeds"
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/CER/app/Http/Controllers/PatientsController.php",
+		"/C/wamp64/www/CER/resources/views/patients/index.blade.php",
 		"/C/wamp64/www/CER/resources/views/auth/register.blade.php",
+		"/C/wamp64/www/CER/resources/views/hospitals/hospitals_ccecsta_results.blade.php",
 		"/C/wamp64/www/CER/app/Http/Helpers/Functions.php",
 		"/C/wamp64/www/CER/.env",
 		"/C/wamp64/www/CER/resources/views/hospitals/create.blade.php",
@@ -830,10 +832,7 @@
 		"/C/wamp64/www/streamline/resources/views/patients/create.blade.php",
 		"/C/wamp64/www/streamline/database/migrations/2018_03_01_100843_create_patient_documents_table.php",
 		"/C/wamp64/www/streamline/app/Http/Controllers/InsuranceMembersController.php",
-		"/C/wamp64/www/streamline/app/Http/Controllers/InsuranceGroupController.php",
-		"/C/wamp64/www/streamline/app/Http/Requests/StorePatientDocument.php",
-		"/C/wamp64/www/streamline/resources/views/layouts/app.blade.php",
-		"/C/wamp64/www/streamline/public/js/patients/create.js"
+		"/C/wamp64/www/streamline/app/Http/Controllers/InsuranceGroupController.php"
 	],
 	"find":
 	{
@@ -852,6 +851,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"female",
+			"classes",
 			"style=\"width: 30%\"",
 			"Gender",
 			"gender",
@@ -977,9 +978,7 @@
 			"<button",
 			"button",
 			"$item_dropdown",
-			"$discountPer",
-			"sele",
-			"make_de"
+			"$discountPer"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -999,7 +998,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1008,15 +1007,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1026,
+						"buffer_size": 1117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								657,
-								657
+								606,
+								606
 							]
 						],
 						"settings":
@@ -1024,57 +1023,27 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 882.0,
+						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/Http/Controllers/PatientsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								402,
-								402
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 378.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "resources/views/layouts/app.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5547,
+						"buffer_size": 5794,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1532,
-								1532
+								1228,
+								1228
 							]
 						],
 						"settings":
@@ -1084,7 +1053,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1282.0,
+						"translation.y": 1198.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/Auth/RegisterController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2646.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1096,15 +1095,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2836,
+						"buffer_size": 2934,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2831,
-								2831
+								2576,
+								2576
 							]
 						],
 						"settings":
@@ -1114,10 +1113,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2478.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1144,7 +1143,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 924.0,
+						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1216,15 +1215,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5614,
+						"buffer_size": 6499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4556,
-								4556
+								1788,
+								1788
 							]
 						],
 						"settings":
@@ -1234,7 +1233,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2877.0,
+						"translation.y": 239.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1246,15 +1245,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2538,
+						"buffer_size": 2583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1324,
-								1324
+								652,
+								652
 							]
 						],
 						"settings":
@@ -1264,56 +1263,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1386.0,
+						"translation.y": 462.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "resources/views/patients/index.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								165,
-								165
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
 					"file": "resources/views/hospitals/hospitals_in_area.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4742,
+						"buffer_size": 6377,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1540,
-								1540
+								3302,
+								3302
 							]
 						],
 						"settings":
@@ -1323,43 +1293,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2226.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "resources/views/hospitals/hospitals_ccecsta_results.blade.php",
+					"buffer": 10,
+					"file": "resources/views/hospitals/ccecsta_results_column_graph.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2299,
+						"buffer_size": 2240,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								168,
-								168
+								1361,
+								1361
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1415.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "resources/views/hospitals/edit.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1389,20 +1360,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "resources/views/hospitals/show.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23344,
+						"buffer_size": 23363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4502,
-								4502
+								806,
+								806
 							]
 						],
 						"settings":
@@ -1411,10 +1382,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2920.0,
+						"translation.y": 568.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "resources/views/hospitals/show_hospital_details.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4014,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								468,
+								468
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1473,12 +1473,40 @@
 		"selected_items":
 		[
 			[
-				"reg",
-				"resources\\views\\auth\\register.blade.php"
+				"regis",
+				"app\\Http\\Controllers\\Auth\\RegisterController.php"
 			],
 			[
 				"",
 				"app\\Http\\Helpers\\Functions.php"
+			],
+			[
+				"func",
+				"app\\Http\\Helpers\\Functions.php"
+			],
+			[
+				"fun",
+				"app\\Http\\Helpers\\Functions.php"
+			],
+			[
+				"regi",
+				"resources\\views\\auth\\register.blade.php"
+			],
+			[
+				"app",
+				"resources\\views\\layouts\\app.blade.php"
+			],
+			[
+				"web",
+				"routes\\web.php"
+			],
+			[
+				"hospital",
+				"resources\\views\\hospitals\\hospitals_ccecsta_results.blade.php"
+			],
+			[
+				"reg",
+				"resources\\views\\auth\\register.blade.php"
 			],
 			[
 				"sho",
@@ -1489,15 +1517,7 @@
 				"app\\Http\\Controllers\\HomeController.php"
 			],
 			[
-				"fun",
-				"app\\Http\\Helpers\\Functions.php"
-			],
-			[
 				"we",
-				"routes\\web.php"
-			],
-			[
-				"web",
 				"routes\\web.php"
 			],
 			[
@@ -1511,14 +1531,6 @@
 			[
 				"hso",
 				"app\\Http\\Controllers\\HospitalController.php"
-			],
-			[
-				"func",
-				"app\\Http\\Helpers\\Functions.php"
-			],
-			[
-				"app",
-				"resources\\views\\layouts\\app.blade.php"
 			],
 			[
 				"inde",
@@ -1573,10 +1585,6 @@
 				"composer.json"
 			],
 			[
-				"regi",
-				"resources\\views\\auth\\register.blade.php"
-			],
-			[
 				"compo",
 				"composer.json"
 			],
@@ -1587,10 +1595,6 @@
 			[
 				"heal",
 				"database\\seeds\\HealthUnitTableSeeder.php"
-			],
-			[
-				"regis",
-				"resources\\views\\auth\\register.blade.php"
 			],
 			[
 				"create_u",
@@ -1979,10 +1983,6 @@
 			[
 				"process_us",
 				"pages\\users\\process_users.php"
-			],
-			[
-				"header",
-				"pages\\header.php"
 			]
 		],
 		"width": 0.0
@@ -2024,7 +2024,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 212.0,
 	"status_bar_visible": true,
 	"template_settings":

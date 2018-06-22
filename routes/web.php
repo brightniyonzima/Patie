@@ -31,3 +31,4 @@ Route::post('store_hospital_score','HospitalController@store_hospital_scores')->
 Route::post('send_locations','HospitalController@send_locations');
 Route::get('hospital_scores','HospitalController@list_hospitals_ccecsta_scores');
 Route::get('ccecsta_results_column_graph','HospitalController@show_ccecsta_column_graph');
+Route::get('districts_graph','HospitalController@show_ccecsta_column_graph_per_district');

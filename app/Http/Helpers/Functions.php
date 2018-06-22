@@ -61,7 +61,23 @@ function calculate_single_hospital_point($hospital_id)
     //3.sum up value at stage 2 then divide that sum by count(params*5)
     //4.take note that distance isnt added here coz its not stored in the table and so its calculated on the fly
 }
-function add_distance_parameter($destination,$current)
+
+function calculate_mulitple_hospital_points($hospitals_ids_array)
+{
+    # this is essentially the average ccecsta score of those hospitals...
+    /*sum up calculate_single_hospital_point of all hospitals/number of hospitals*/
+    $sums = 0;
+    for ($i=0; $i < count($hospitals_ids_array) ; $i++) { 
+        $sums +=  calculate_single_hospital_point($i);
+    }
+    if (count($hospitals_ids_array)!=0) {
+        $multiple_hospitals_ccecsta_score = $sums/count($hospitals_ids_array);
+        return $multiple_hospitals_ccecsta_score;
+    }
+    return 0;    
+}
+
+function calculate_distance_parameter_score($destination,$current)
 {
     //if destination subregion == current subregion then distance will score 4
     //if destination subregion(west_1) != current subregion(west_2) then distance will score be 3

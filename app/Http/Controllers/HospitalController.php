@@ -159,7 +159,7 @@ class HospitalController extends Controller
         return view('hospitals.hospitals_ccecsta_results',compact('hospitals'));
     }
     /*
-     *show a grpah of all hospital score
+     *show a graph of all hospital score
     */
     public function show_ccecsta_column_graph()
     {
@@ -172,5 +172,46 @@ class HospitalController extends Controller
         }
         $total_students_females = [10,11,23,12,12,14];
         return view('hospitals.ccecsta_results_column_graph',compact('hospitals_array','hospitals_score_array'));
+    }
+    /*
+     *show graph for hospitals per districts
+    */
+    public function show_ccecsta_column_graph_per_district()
+    {
+        $districts = \App\District::orderBy('name','asc')->get();
+        $hospitals = [];
+        $districts_array = [];
+        $hospitals_score_array = [];
+        foreach ($districts as $district) {
+            $districts_array[] = $district->name;
+            $hospital_ids_in_district = HealthUnit::where('location',$district->id)->pluck('id')->toArray();
+            $hospitals_score_array[] = calculate_mulitple_hospital_points($hospital_ids_in_district);
+        }
+        return view('hospitals.ccecsta_districts_graph',compact('districts_array','hospitals_score_array'));
+    }
+    /*
+      *function to generate an excel of all hospital score
+    */
+    public function generate_ccecsta_excel()
+    {
+        $hospitals = HealthUnit::orderBy('name','asc')->get();
+        $hospitals_array = [];
+        $hospitals_score_array = [];
+        foreach ($hospitals as $hospital) {
+            $hospitals_array[] = $hospital->name;
+            $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
+        }
+
+        return Excel::create('ccecsta-points', function($excel) use ($data) {
+            $excel->sheet('Hospital Points', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data, null, 'A2', false, true);
+                $sheet->mergeCells('A1:D1');
+                $sheet->row(1, function ($row) {                
+                    $row->setFontSize(12);
+                });
+                $sheet->row(1, array('ccecsta points'));
+            });
+        })->download('xls');
     }
 }
