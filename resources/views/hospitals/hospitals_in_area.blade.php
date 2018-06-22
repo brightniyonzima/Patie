@@ -43,40 +43,7 @@
                                 </tr>
                             @endif
                         </table>
-                    </div>
-                    <div class="current" style="margin-top: 50px;">
-                        <b>Ratings of hospitals in your current area: <font color="green">({{ get_district_name($current_location) }})</font></b>
-                        <table  class="display" id="patie-data-table2" style="width: 100%">
-                            <tr style="background-color: #eee">
-                                <th style="width: 40%; padding: 8px 10px; box-sizing: content-box; vertical-align: inherit;"><small>Hospital Name</small></th>
-                                <th style="width: 40%; padding: 8px 10px; box-sizing: content-box; vertical-align: inherit;"><small>CCECSTA</small></th>
-                                <th style="width: 20%"><small>Rating</small></th>
-                            </tr>
-
-                            @if(!is_null($hospitals_in_current_area))
-                                @foreach($hospitals_in_current_area as $hospital)
-                                <tr>
-                                    <td style="border-top: 1px solid #ddd; padding: 8px 10px; box-sizing: content-box; display: table-cell; vertical-align: inherit;"><a href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }}</a></td>
-                                    <td style="border-top: 1px solid #ddd; padding: 8px 10px; box-sizing: content-box; display: table-cell; vertical-align: inherit;">{{ calculate_single_hospital_point($hospital->id) }}</td>
-                                    @php $points = calculate_single_hospital_point($hospital->id); @endphp
-                                    <td style="border-top: 1px solid #ddd; padding: 8px 10px; box-sizing: content-box; display: table-cell; vertical-align: inherit;">
-                                        @if($points <= 5 && $points > 4)
-                                           <span class="label label-success">Very Good</span>
-                                        @elseif($points <= 4 && $points > 2.5)
-                                            <span class="label label-warning">Good</span>
-                                        @else
-                                            <span class="label label-danger">Poor</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="4">No records in the db</td>
-                                </tr>
-                            @endif
-                        </table>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>
