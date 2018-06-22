@@ -25,11 +25,11 @@
                                         @php $points = calculate_single_hospital_point($hospital->id); @endphp
                                         @if($points <= 5 && $points > 4)
                                            <span class="label label-success">Very High</span>
-                                        @elseif($points <= 4 && $points > 3.1)
+                                        @elseif($points <= 4 && $points > 3)
                                             <span class="label label-primary">High</span>
-                                        @elseif($points <= 3.1 && $points > 2.2)
+                                        @elseif($points <= 3 && $points > 2)
                                             <span class="label label-default">Average</span>
-                                        @elseif($points <= 2.1 && $points > 1)
+                                        @elseif($points <= 2 && $points > 1)
                                             <span class="label label-warning">Low</span>
                                         @else
                                             <span class="label label-danger">Poor</span>
