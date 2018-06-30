@@ -29,11 +29,50 @@
                             <label for="location" class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                {{ Form::select('location',$districts,'',['class' => 'form-control','id' => 'location']) }}
+                                {{ Form::select('location',$districts,'',['class' => 'form-control','id' => 'location','onchange' => 'showCounties(this.value)']) }}
 
                                 @if ($errors->has('location'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('location') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('county') ? ' has-error' : '' }}" id="county-group" style="display: none;">
+                            <label for="county" class="col-md-4 control-label">County</label>
+
+                            <div class="col-md-6" id="counties">
+
+                                @if ($errors->has('county'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('county') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('subcounty') ? ' has-error' : '' }}" id="subcounty-group" style="display: none;">
+                            <label for="subcounty" class="col-md-4 control-label">Sub County</label>
+
+                            <div class="col-md-6" id="subcounties">
+
+                                @if ($errors->has('subcounty'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('subcounty') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('parish') ? ' has-error' : '' }}" id="parish-group" style="display: none;">
+                            <label for="parish" class="col-md-4 control-label">Parish</label>
+
+                            <div class="col-md-6" id="parishes">
+
+                                @if ($errors->has('parish'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('parish') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -53,3 +92,46 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+    function showCounties(chosen_value) {
+        $.ajax({
+            url: '/get_counties?district_id=' + chosen_value,
+            type: 'get',
+            success: function(response){  
+                $('#county-group').show();
+                document.getElementById('counties').innerHTML = response;
+            },
+            error: function(response){
+                console.log('there was an error getting the service price');
+            }
+        });
+    }
+
+    function showSubCounties(chosen_value) {
+        $.ajax({
+            url: '/get_subcounties?county_id=' + chosen_value,
+            type: 'get',
+            success: function(response){  
+                $('#subcounty-group').show();
+                document.getElementById('subcounties').innerHTML = response;
+            },
+            error: function(response){
+                console.log('there was an error getting the service price');
+            }
+        });
+    }
+
+    function showParishes(chosen_value) {
+        $.ajax({
+            url: '/get_parishes?subcounty_id=' + chosen_value,
+            type: 'get',
+            success: function(response){  
+                $('#parish-group').show();
+                document.getElementById('parishes').innerHTML = response;
+            },
+            error: function(response){
+                console.log('there was an error getting the service price');
+            }
+        });
+    }
+</script>

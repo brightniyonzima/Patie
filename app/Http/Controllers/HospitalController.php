@@ -110,6 +110,55 @@ class HospitalController extends Controller
         $hospital = HealthUnit::destroy($id);
         return redirect('hospitals');
     }
+
+    public function get_counties()
+    {
+        $district_id = intval($_GET['district_id']);
+        $sql = "SELECT * FROM counties WHERE district_id = '" . $district_id . "'";
+        $results = DB::select($sql);
+        $responseText = "";
+        $responseText .= "<select class='form-control' id='county' onchange='showSubCounties(this.value)' name='subcounty'>";
+        foreach($results as $result) {
+            $value = $result->id;
+            $name = $result->name;
+            $responseText .= "<option value='".$value."'>".$name."</option>";
+        }
+        $responseText .= "</select>";
+        return $responseText;
+    }
+
+    public function get_subcounties()
+    {
+        $county_id = intval($_GET['county_id']);
+        $sql = "SELECT * FROM subcounties WHERE county_id = '" . $county_id . "'";
+        $results = DB::select($sql);
+        $responseText = "";
+        $responseText .= "<select class='form-control' id='subcounty' onchange='showParishes(this.value)' name='subcounty'>";
+        foreach($results as $result) {
+            $value = $result->id;
+            $name = $result->name;
+            $responseText .= "<option value='".$value."'>".$name."</option>";
+        }
+        $responseText .= "</select>";
+        return $responseText;
+    }
+
+     public function get_parishes()
+    {
+        $subcounty_id = intval($_GET['subcounty_id']);
+        $sql = "SELECT * FROM parishes WHERE subcounty_id = '" . $subcounty_id . "'";
+        $results = DB::select($sql);
+        $responseText = "";
+        $responseText .= "<select class='form-control' id='subcounty' onchange='showVillages(this.value)' name='subcounty'>";
+        foreach($results as $result) {
+            $value = $result->id;
+            $name = $result->name;
+            $responseText .= "<option value='".$value."'>".$name."</option>";
+        }
+        $responseText .= "</select>";
+        return $responseText;
+    }
+
     /*save the parameter scroes of that hospital*/
     public function store_hospital_scores(Request $request)
     {
@@ -148,7 +197,13 @@ class HospitalController extends Controller
         //2.add distance points in accordance with how far from the current location e.g if same dist=5,sub_region=3
         //3.suggest near by hospitals with a good score basing hospitals in that same district or sub region
         //dd($hospitals_in_preferred_area);
-        return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','hospitals_in_current_area','current_location'));
+        $hospitals_array = [];
+        $hospitals_score_array = [];
+        foreach ($hospitals_in_preferred_area as $hospital) {
+            $hospitals_array[] = $hospital->name;
+            $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
+        }
+        return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','hospitals_in_current_area','current_location','hospitals_array','hospitals_score_array'));
     }
     /*
     show ccecsta scores of a hospital
@@ -170,7 +225,6 @@ class HospitalController extends Controller
             $hospitals_array[] = $hospital->name;
             $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
         }
-        $total_students_females = [10,11,23,12,12,14];
         return view('hospitals.ccecsta_results_column_graph',compact('hospitals_array','hospitals_score_array'));
     }
     /*

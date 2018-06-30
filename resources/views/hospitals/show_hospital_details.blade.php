@@ -47,6 +47,10 @@
 		                        </tr>
 		                        @endif
 		                    @endforeach
+		                    <tr>
+		                    	<td><b>Points Score</b> <small>(using the CCECSTA)</small></td>
+		                    	<td><b>{{ calculate_single_hospital_point($hospital->id) }}</b></td>
+		                    </tr>
 		                </table>
 	                </div>
 	            </div>
