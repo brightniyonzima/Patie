@@ -22,6 +22,8 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('get_current_parishes','HomeController@get_current_parishes');
+Route::get('get_destination_parishes','HomeController@get_destination_parishes');
 
 Route::resource('patients','PatientsController');
 

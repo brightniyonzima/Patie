@@ -46,6 +46,7 @@ class HospitalController extends Controller
         $health_unit = new HealthUnit;
         $health_unit->name = $request->name;
         $health_unit->location = $request->location;
+        $health_unit->parish_id = $request->parish;
         $health_unit->created_by = auth()->user()->email;
         $health_unit->save();
         return redirect('/hospitals');
@@ -117,7 +118,7 @@ class HospitalController extends Controller
         $sql = "SELECT * FROM counties WHERE district_id = '" . $district_id . "'";
         $results = DB::select($sql);
         $responseText = "";
-        $responseText .= "<select class='form-control' id='county' onchange='showSubCounties(this.value)' name='subcounty'>";
+        $responseText .= "<select class='form-control' id='county' onchange='showSubCounties(this.value)' name='county'>";
         foreach($results as $result) {
             $value = $result->id;
             $name = $result->name;
@@ -149,7 +150,7 @@ class HospitalController extends Controller
         $sql = "SELECT * FROM parishes WHERE subcounty_id = '" . $subcounty_id . "'";
         $results = DB::select($sql);
         $responseText = "";
-        $responseText .= "<select class='form-control' id='subcounty' onchange='showVillages(this.value)' name='subcounty'>";
+        $responseText .= "<select class='form-control' id='subcounty' onchange='showVillages(this.value)' name='parish'>";
         foreach($results as $result) {
             $value = $result->id;
             $name = $result->name;
@@ -189,7 +190,9 @@ class HospitalController extends Controller
     public function send_locations(Request $request)
     {
         $current_location = $request->current_location;
+        $current_parish = $request->current_parish;
         $preferred_screening_location = $request->destination_location;
+        $preferred_screening_parish = $request->destination_parish;
 
         $hospitals_in_preferred_area = HealthUnit::where(['location'=>$preferred_screening_location])->get();
         $hospitals_in_current_area = HealthUnit::where(['location'=>$current_location])->get();        
@@ -203,7 +206,7 @@ class HospitalController extends Controller
             $hospitals_array[] = $hospital->name;
             $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
         }
-        return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','hospitals_in_current_area','current_location','hospitals_array','hospitals_score_array'));
+        return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','preferred_screening_parish','hospitals_in_current_area','current_location','current_parish','hospitals_array','hospitals_score_array'));
     }
     /*
     show ccecsta scores of a hospital

@@ -3,7 +3,7 @@
 @section('content')
 <div style="margin-left: 20px;">
     <a href="{{ url()->previous() }}"> 
-        <span class="glyphicons glyphicons-arrow-left"><b> <- Go Back </b></span> 
+        <span class="glyphicons glyphicons-arrow-left"><b> Go Back to previous page </b></span> 
     </a> 
 </div>
 
@@ -25,10 +25,16 @@
                             @if(!is_null($hospitals_in_preferred_area))
                                 @foreach($hospitals_in_preferred_area as $hospital)
                                 <tr>
-                                    <td><a href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }}</a></td>
-                                    <td>{{ calculate_single_hospital_point($hospital->id) }}</td>
+                                    <td><a href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }} <small> {{ get_parish_name($hospital->parish_id) }} </small></a></td>
                                     <td>
-                                        @php $points = calculate_single_hospital_point($hospital->id); @endphp
+                                        @php 
+                                            $points = 0; 
+                                            $distance_points = distance_points($current_parish,$preferred_screening_parish,$current_location,$preferred_screening_location);
+                                            $points = calculate_single_hospital_point_with_distace($hospital->id,$distance_points);
+                                        @endphp
+                                        {{ $points }}
+                                    </td>
+                                    <td>
                                         @if($points <= 5 && $points > 4)
                                            <span class="label label-success">Very High</span>
                                         @elseif($points <= 4 && $points > 3)

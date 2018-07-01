@@ -20,7 +20,9 @@
                             <label for="current_location" class="col-md-6 control-label">Select your current current Location </label>
 
                             <div class="col-md-4">
-                                {{ Form::select('current_location',$districts,'',['class' => 'form-control','id' => 'current_location','required'=>'true']) }}
+                                {{ Form::select('current_location',$districts,'',['class' => 'form-control','id' => 'current_location','required'=>'true','onchange'=>'showParishes(this.value)']) }}
+
+                                <div id="parishes"></div>
 
                                 @if ($errors->has('current_location'))
                                     <span class="help-block">
@@ -30,11 +32,15 @@
                             </div>
                         </div> 
 
+                        <br>
+
                         <div class="form-group{{ $errors->has('destination_location') ? ' has-error' : '' }}">
                             <label for="destination_location" class="col-md-6 control-label">Select where you would like to do screening? </label>
 
                             <div class="col-md-4">
-                                {{ Form::select('destination_location',$districts,'',['class' => 'form-control','id' => 'destination_location','required'=>'true']) }}
+                                {{ Form::select('destination_location',$districts,'',['class' => 'form-control','id' => 'destination_location','required'=>'true','onchange'=>'showDestinationParishes(this.value)']) }}
+
+                                <div id="destination_parishes"></div>
 
                                 @if ($errors->has('destination_location'))
                                     <span class="help-block">
@@ -73,18 +79,31 @@
     </div>
 </div>
 @endsection
-@push('scripts')
 <script type="text/javascript">
-/*jQuery(document).ready(function(e) {
-    console.log('loadded');
-    $('#view_hospitals').on("click", function () {
-        e.preventDefault();
-        alert('clicked');
-    });
-});*/
-function show_hospitals() {
-    var chosenDistrict = document.getElementById('location').value;
-    alert('you have chosen ' + chosenDistrict + ' district');
-}
+    function showParishes(chosen_value) {
+        $.ajax({
+            url: '/get_current_parishes?district_id=' + chosen_value,
+            type: 'get',
+            success: function(response){
+                $('#parish-group').show();
+                document.getElementById('parishes').innerHTML = response;
+            },
+            error: function(response){
+                console.log('there was an error getting the parishes');
+            }
+        });
+    }
+
+    function showDestinationParishes(chosen_value) {
+        $.ajax({
+            url: '/get_destination_parishes?district_id=' + chosen_value,
+            type: 'get',
+            success: function(response){
+                document.getElementById('destination_parishes').innerHTML = response;
+            },
+            error: function(response){
+                console.log('there was an error getting the parishes');
+            }
+        });
+    }
 </script>
-@endpush
