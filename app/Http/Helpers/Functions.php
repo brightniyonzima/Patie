@@ -103,6 +103,7 @@ function calculate_mulitple_hospital_points($hospitals_ids_array)
 
 function distance_points($current_village,$preferred_screening_village,$current_district,$preferred_district)
 {
+    /*select the hospitals location*/
     if (!is_null($preferred_screening_village)) {
         $destination_village = \App\Village::where(['id' => $preferred_screening_village])->first();
         $preferred_parish_id = $destination_village->parish_id;

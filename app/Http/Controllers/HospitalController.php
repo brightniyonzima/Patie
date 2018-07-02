@@ -205,7 +205,8 @@ class HospitalController extends Controller
         $hospitals_score_array = [];
         foreach ($hospitals_in_preferred_area as $hospital) {
             $hospitals_array[] = $hospital->name;
-            $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
+            $distance_points = distance_points($current_parish,$preferred_screening_parish,$current_location,$preferred_screening_location);
+            $hospitals_score_array[] = calculate_single_hospital_point_with_distace($hospital->id,$distance_points);
         }
         return view('hospitals.hospitals_in_area',compact('hospitals_in_preferred_area','preferred_screening_location','preferred_screening_parish','hospitals_in_current_area','current_location','current_parish','hospitals_array','hospitals_score_array'));
     }
