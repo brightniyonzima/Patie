@@ -60,13 +60,14 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
+        $distance = isset($_GET['distance']) ? $_GET['distance'] : 0;
         $hospital = HealthUnit::findOrFail($id);
         $param_scores = HospitalParameterScore::where(['hospital_id'=>$id])->first();
         if (is_null($param_scores)) {
             return view('hospitals.show',compact('hospital'));
         }
         $param_scores = $param_scores->toArray();
-        return view('hospitals.show_hospital_details',compact('hospital','param_scores'));
+        return view('hospitals.show_hospital_details',compact('hospital','param_scores','distance'));
     }
 
     /**

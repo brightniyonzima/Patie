@@ -18,20 +18,20 @@
                         <table  class="display" id="patie-data-table">
                             <tr style="background-color: #eee">
                                 <th style="width: 40%"><small>Hospital Name</small></th>
-                                <th style="width: 40%"><small>CCECSTA Score</small></th>
+                                <th style="width: 40%"><small>Cost Effectiveness Score</small></th>
                                 <th style="width: 20%"><small>Rating</small></th>
                             </tr>
 
                             @if(!is_null($hospitals_in_preferred_area))
                                 @foreach($hospitals_in_preferred_area as $hospital)
+                                    @php 
+                                        $points = 0; 
+                                        $distance_points = distance_points($current_parish,$preferred_screening_parish,$current_location,$preferred_screening_location);
+                                        $points = calculate_single_hospital_point_with_distace($hospital->id,$distance_points);
+                                    @endphp
                                 <tr>
-                                    <td><a href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }} <small> {{ get_parish_name($hospital->parish_id) }} </small></a></td>
+                                    <td><a href="/hospitals/{{ $hospital->id }}?distance={{$distance_points}}">{{ $hospital->name }} <small> {{ get_parish_name($hospital->parish_id) }} </small></a></td>
                                     <td>
-                                        @php 
-                                            $points = 0; 
-                                            $distance_points = distance_points($current_parish,$preferred_screening_parish,$current_location,$preferred_screening_location);
-                                            $points = calculate_single_hospital_point_with_distace($hospital->id,$distance_points);
-                                        @endphp
                                         {{ $points }}
                                     </td>
                                     <td>

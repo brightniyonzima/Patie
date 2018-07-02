@@ -7,6 +7,7 @@ use DB;
 use App\county;
 use App\Subcounty;
 use App\Parish;
+use App\Village;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $districts = DB::table('districts')->orderBy('name','asc')->pluck('name','id')->toArray();
-        $districts = array_prepend($districts, '- select district-', '');
+        $districts = array_prepend($districts, '-- select district --', '');
         return view('home',compact('districts'));
     }
 
@@ -39,13 +40,16 @@ class HomeController extends Controller
         $parishes_select = [];
         $responseText = "";
         $responseText .= "<select class='form-control' id='current_parish' name='current_parish'>";
-        $responseText .= "<option value='' selected='selected'>- select parish-</option>";
+        $responseText .= "<option value='' selected='selected'>-- select vilage or cell--</option>";
         foreach ($counties_in_district as $county) {
             $subcounties_in_county = Subcounty::where(['county_id'=>$county->id])->get();
             foreach ($subcounties_in_county as $subcounty) {
                 $parishes = Parish::where(['subcounty_id'=>$subcounty->id])->get();
                 foreach ($parishes as $parish) {
-                    $responseText .= "<option value='".$parish->id."'>".$parish->name."</option>";
+                    $villages = Village::where(['parish_id'=>$parish->id])->get();
+                    foreach ($villages as $village) {
+                        $responseText .= "<option value='".$village->id."'>".$village->name."</option>";
+                    }
                 }
             }
         }
@@ -60,13 +64,16 @@ class HomeController extends Controller
         $parishes_select = [];
         $responseText = "";
         $responseText .= "<select class='form-control' id='destination_parish' name='destination_parish'>";
-        $responseText .= "<option value='' selected='selected'>- select parish-</option>";
+        $responseText .= "<option value='' selected='selected'>-- select village or cell --</option>";
         foreach ($counties_in_district as $county) {
             $subcounties_in_county = Subcounty::where(['county_id'=>$county->id])->get();
             foreach ($subcounties_in_county as $subcounty) {
                 $parishes = Parish::where(['subcounty_id'=>$subcounty->id])->get();
                 foreach ($parishes as $parish) {
-                    $responseText .= "<option value='".$parish->id."'>".$parish->name."</option>";
+                    $villages = Village::where(['parish_id'=>$parish->id])->get();
+                    foreach ($villages as $village) {
+                        $responseText .= "<option value='".$village->id."'>".$village->name."</option>";
+                    }
                 }
             }
         }

@@ -48,6 +48,10 @@
 		                        @endif
 		                    @endforeach
 		                    <tr>
+		                    	<td> distance </td>
+		                    	<td> {{ $distance }}</td>
+		                    </tr>
+		                    <tr>
 		                    	<td><b>Points Score</b> <small>(using the CCECSTA)</small></td>
 		                    	<td><b>{{ calculate_single_hospital_point($hospital->id) }}</b></td>
 		                    </tr>

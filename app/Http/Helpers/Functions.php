@@ -101,18 +101,31 @@ function calculate_mulitple_hospital_points($hospitals_ids_array)
     return 0;    
 }
 
-function distance_points($current_parish,$preferred_screening_parish,$current_district,$preferred_district)
+function distance_points($current_village,$preferred_screening_village,$current_district,$preferred_district)
 {
-    $destination_subcounty = \App\Parish::where(['id' => $preferred_screening_parish])->first();
-    $preferred_subcounty_id = $destination_subcounty->subcounty_id;
-    $destination_county = \App\Subcounty::where(['id' => $preferred_subcounty_id])->first();
-    $preferred_county_id = $destination_county->county_id;
-    $destination_district = \App\county::where(['id' => $preferred_county_id])->first();
-    $preferred_district_id = $destination_county->district_id;
-    $destinationsubregion = \App\District::findOrFail($preferred_district);
-    $destination_subregion = $destinationsubregion->sub_region;
+    if (!is_null($preferred_screening_village)) {
+        $destination_village = \App\Village::where(['id' => $preferred_screening_village])->first();
+        $preferred_parish_id = $destination_village->parish_id;
+        $destination_subcounty = \App\Parish::where(['id' => $preferred_parish_id])->first();
+        $preferred_subcounty_id = $destination_subcounty->subcounty_id;
+        $destination_county = \App\Subcounty::where(['id' => $preferred_subcounty_id])->first();
+        $preferred_county_id = $destination_county->county_id;
+        $destination_district = \App\county::where(['id' => $preferred_county_id])->first();
+        $preferred_district_id = $destination_county->district_id;
+        $destinationsubregion = \App\District::findOrFail($preferred_district);
+        $destination_subregion = $destinationsubregion->sub_region;
+    }
+    else{
+        $preferred_parish_id = null;
+        $preferred_subcounty_id = null;
+        $preferred_county_id = null;
+        $destinationsubregion = \App\District::findOrFail($preferred_district);
+        $destination_subregion = $destinationsubregion->sub_region;
+    }
 
-    $current_subcounty = \App\Parish::where(['id' => $current_parish])->first();
+    $current_village = \App\Village::where(['id' => $current_village])->first();
+    $current_parish_id = $current_village->parish_id;
+    $current_subcounty = \App\Parish::where(['id' => $current_parish_id])->first();
     $current_subcounty_id = $current_subcounty->subcounty_id;
     $current_county = \App\Subcounty::where(['id' => $current_subcounty_id])->first();
     $current_county_id = $current_county->county_id;
@@ -121,7 +134,7 @@ function distance_points($current_parish,$preferred_screening_parish,$current_di
     $currentsubregion = \App\District::findOrFail($current_district);
     $current_subregion = isset($currentsubregion->sub_region)?$currentsubregion->sub_region:"";
 
-    if ($current_parish == $preferred_screening_parish) {
+    if ($current_parish_id == $preferred_parish_id) {
         return 5;
     } 
     else if($current_subcounty_id == $preferred_subcounty_id){
