@@ -29,7 +29,7 @@
                             <label for="location" class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                {{ Form::select('location',$districts,'',['class' => 'form-control','id' => 'location','onchange' => 'showCounties(this.value)']) }}
+                                {{ Form::select('location',$districts,'',['class' => 'form-control','id' => 'location','onchange' => 'showCounties(this.value)','onclick' => 'showCounties(this.value)']) }}
 
                                 @if ($errors->has('location'))
                                     <span class="help-block">

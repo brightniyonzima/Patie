@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"ret\treturn"
+			],
+			[
+				"if",
+				"ifelse\tif … else …"
+			],
+			[
+				"sub",
+				"sub_region"
+			],
+			[
+				"dest",
+				"destination_subregion"
+			],
+			[
+				"des",
+				"destination_subcounty"
+			],
+			[
 				"dis",
 				"distance_points"
 			],
@@ -20,10 +40,6 @@
 				"preferred_screening_parish"
 			],
 			[
-				"des",
-				"destination_parishes"
-			],
-			[
 				"H",
 				"HomeController"
 			],
@@ -38,10 +54,6 @@
 			[
 				"par",
 				"parishes_select"
-			],
-			[
-				"sub",
-				"subcounty_parishes"
 			],
 			[
 				"co",
@@ -62,10 +74,6 @@
 			[
 				"p",
 				"parishes"
-			],
-			[
-				"re",
-				"request"
 			],
 			[
 				"res",
@@ -506,14 +514,6 @@
 			[
 				"exp",
 				"explode"
-			],
-			[
-				"cou",
-				"course_id"
-			],
-			[
-				"min",
-				"min-width"
 			]
 		]
 	},
@@ -549,7 +549,7 @@
 			"file": "app/Http/Helpers/Functions.php",
 			"settings":
 			{
-				"buffer_size": 4615,
+				"buffer_size": 6431,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -603,9 +603,34 @@
 			"file": "resources/views/hospitals/hospitals_in_area.blade.php",
 			"settings":
 			{
-				"buffer_size": 7844,
+				"buffer_size": 7184,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "database/seeds/DatabaseSeeder.php",
+			"settings":
+			{
+				"buffer_size": 440,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "database/seeds/CountiesTableSeeder.php",
+			"settings":
+			{
+				"buffer_size": 8048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "database/seeds/DistrictsTableSeeder.php",
+			"settings":
+			{
+				"buffer_size": 2434,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -858,6 +883,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"currentsubregion",
+			"destination",
+			"destination_",
+			"$preferred",
 			"districts",
 			"county_id",
 			"subcounty",
@@ -981,11 +1010,7 @@
 			"$discount_options",
 			"sales",
 			"discountper",
-			"dropdown",
-			"amount_pa",
-			"total_value_go",
-			"sum_pr",
-			"submit_pr"
+			"dropdown"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1005,7 +1030,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -1033,7 +1058,7 @@
 						"translation.y": 588.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1063,7 +1088,7 @@
 						"translation.y": 4956.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1093,7 +1118,7 @@
 						"translation.y": 4439.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1102,15 +1127,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4615,
+						"buffer_size": 6431,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4187,
-								4187
+								785,
+								785
 							]
 						],
 						"settings":
@@ -1120,10 +1145,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4242.0,
+						"translation.y": 1050.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1139,8 +1164,8 @@
 						"selection":
 						[
 							[
-								1954,
-								1954
+								883,
+								883
 							]
 						],
 						"settings":
@@ -1150,10 +1175,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2269.0,
+						"translation.y": 1597.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1183,7 +1208,7 @@
 						"translation.y": 757.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1213,7 +1238,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -1229,8 +1254,8 @@
 						"selection":
 						[
 							[
-								7812,
-								7812
+								6676,
+								6676
 							]
 						],
 						"settings":
@@ -1240,10 +1265,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8597.0,
+						"translation.y": 7925.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1273,7 +1298,7 @@
 						"translation.y": 462.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1282,15 +1307,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7844,
+						"buffer_size": 7184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1722,
-								1661
+								1417,
+								1417
 							]
 						],
 						"settings":
@@ -1300,14 +1325,104 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 995.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "database/seeds/DatabaseSeeder.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 440,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								431,
+								431
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 336.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "database/seeds/CountiesTableSeeder.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								172,
+								172
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
+					"file": "database/seeds/DistrictsTableSeeder.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2434,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
 					"file": "resources/views/hospitals/ccecsta_results_column_graph.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1333,11 +1448,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 14,
 					"file": "resources/views/hospitals/ccecsta_districts_graph.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1363,11 +1478,11 @@
 						"translation.y": 210.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 15,
 					"file": "resources/views/hospitals/edit.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1393,11 +1508,11 @@
 						"translation.y": 924.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 16,
 					"file": "resources/views/hospitals/show_hospital_details.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1422,11 +1537,11 @@
 						"translation.y": 1219.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 17,
 					"file": "resources/views/hospitals/create.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1452,7 +1567,7 @@
 						"translation.y": 5334.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1510,6 +1625,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"distr",
+				"database\\seeds\\DistrictsTableSeeder.php"
+			],
+			[
+				"d",
+				"database\\seeds\\DatabaseSeeder.php"
+			],
 			[
 				"web",
 				"routes\\web.php"
@@ -1701,10 +1824,6 @@
 			[
 				"compo",
 				"composer.json"
-			],
-			[
-				"distr",
-				"database\\seeds\\DistrictsTableSeeder.php"
 			],
 			[
 				"heal",
@@ -2017,10 +2136,6 @@
 			[
 				"select",
 				"pages\\Views\\patients\\select_department.php"
-			],
-			[
-				"patient_fo",
-				"pages\\Views\\patients\\patient_form.php"
 			]
 		],
 		"width": 0.0

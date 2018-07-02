@@ -118,7 +118,7 @@ class HospitalController extends Controller
         $sql = "SELECT * FROM counties WHERE district_id = '" . $district_id . "'";
         $results = DB::select($sql);
         $responseText = "";
-        $responseText .= "<select class='form-control' id='county' onchange='showSubCounties(this.value)' name='county'>";
+        $responseText .= "<select class='form-control' id='county' onchange='showSubCounties(this.value)' onclick='showSubCounties(this.value)' name='county'>";
         foreach($results as $result) {
             $value = $result->id;
             $name = $result->name;
@@ -134,7 +134,7 @@ class HospitalController extends Controller
         $sql = "SELECT * FROM subcounties WHERE county_id = '" . $county_id . "'";
         $results = DB::select($sql);
         $responseText = "";
-        $responseText .= "<select class='form-control' id='subcounty' onchange='showParishes(this.value)' name='subcounty'>";
+        $responseText .= "<select class='form-control' id='subcounty' onchange='showParishes(this.value)' onclick='showParishes(this.value)' name='subcounty'>";
         foreach($results as $result) {
             $value = $result->id;
             $name = $result->name;
@@ -150,7 +150,7 @@ class HospitalController extends Controller
         $sql = "SELECT * FROM parishes WHERE subcounty_id = '" . $subcounty_id . "'";
         $results = DB::select($sql);
         $responseText = "";
-        $responseText .= "<select class='form-control' id='subcounty' onchange='showVillages(this.value)' name='parish'>";
+        $responseText .= "<select class='form-control' id='subcounty' onchange='showVillages(this.value)' onclick='showVillages(this.value)' name='parish'>";
         foreach($results as $result) {
             $value = $result->id;
             $name = $result->name;
