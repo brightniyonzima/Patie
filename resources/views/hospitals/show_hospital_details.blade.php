@@ -37,7 +37,7 @@
 	                    <table  class="display" id="patie-data-table">
                             <tr style="background-color: #eee">
                                 <th style="width: 50%"><small>Parameter</small></th>
-                                <th style="width: 50%"><small>Points</small></th>
+                                <th style="width: 50%"><small>Cost Effectiveness Value</small></th>
                             </tr>
 		                    @foreach($param_scores as $name => $score)
 		                        @if(!in_array($name, ['id','hospital_id','createdby','created_at','updated_at']))
@@ -45,7 +45,7 @@
 		                        	<td>
 		                        	    {{ str_replace('_', ' ', $name) }} 
 		                        	</td>
-		                        	<td> {{ $score }} <small><font style="color: #19ccce;"> {{ get_comment($name,$score) }} </font></small></td>
+		                        	<td> {{ $score }}</td>
 		                        </tr>
 		                        @endif
 		                    @endforeach
@@ -54,7 +54,7 @@
 		                    	<td> {{ $distance }}</td>
 		                    </tr>
 		                    <tr>
-		                    	<td><b>Cost Effectiveness Score</b> <small></small></td>
+		                    	<td><b>Total Cost Effectiveness Value</b> <small></small></td>
 		                    	<td><b>{{ calculate_single_hospital_point_with_distace($hospital->id,$distance) }}</b></td>
 		                    </tr>
 		                </table>

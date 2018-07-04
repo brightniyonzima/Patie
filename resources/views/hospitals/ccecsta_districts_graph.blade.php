@@ -23,16 +23,19 @@
             text: 'Average Hospital Cost Effectiveness Per District'   
         };
         var subtitle = {
-            text: 'compiled by Patie model'  
+            text: ''  
         };
         var xAxis = {
             categories: districts_array,
-            crosshair: true
+            crosshair: true,
+            title: {
+                text: 'Districts'         
+            }  
         };
         var yAxis = {
             min: 0,
             title: {
-                text: 'Scores'         
+                text: 'Average CE Scores'         
             }      
         };
         var tooltip = {
@@ -55,7 +58,7 @@
        
         var series= [ 
             {
-                name: 'CCECSTA Score',
+                name: 'CE Score',
                 data: hospitals_score_array
             }
         ];     
