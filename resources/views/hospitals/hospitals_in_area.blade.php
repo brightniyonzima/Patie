@@ -14,7 +14,7 @@
                 <div class="panel-body">
                     <div class="destination">
                         <br><br>
-                        <b>Ratings of hospitals in : <font color="green">{{ get_district_name($preferred_screening_location) }}</font></b>
+                        <b>Ratings of some hospitals in : <font color="green">{{ get_district_name($preferred_screening_location) }}</font></b>
                         <table  class="display" id="patie-data-table">
                             <tr style="background-color: #eee">
                                 <th style="width: 40%"><small>Hospital Name</small></th>

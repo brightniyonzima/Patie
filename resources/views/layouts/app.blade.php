@@ -118,19 +118,22 @@
                     type: 'column'
                 };
                 var title = {
-                    text: 'Hospitals Cost Effectiveness'   
+                    text: 'Hospitals\' Cost Effectiveness'   
                 };
                 var subtitle = {
-                    text: 'compiled by Patie model'  
+                    text: ''  
                 };
                 var xAxis = {
                     categories: hospitals_array,
-                    crosshair: true
+                    crosshair: true,
+                    title:{
+                        text: 'Hospitals'
+                    }
                 };
                 var yAxis = {
                     min: 0,
                     title: {
-                        text: 'Scores'         
+                        text: 'CE Scores'         
                     }      
                 };
                 var tooltip = {
@@ -153,7 +156,7 @@
                
                 var series= [ 
                     {
-                        name: 'CCECSTA Score',
+                        name: 'CE Score',
                         data: hospitals_score_array
                     }
                 ];     

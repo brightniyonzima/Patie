@@ -42,8 +42,10 @@
 		                    @foreach($param_scores as $name => $score)
 		                        @if(!in_array($name, ['id','hospital_id','createdby','created_at','updated_at']))
 		                        <tr>
-		                        	<td>{{ str_replace('_', ' ', $name) }}</td>
-		                        	<td> {{ $score }}</td>
+		                        	<td>
+		                        	    {{ str_replace('_', ' ', $name) }} 
+		                        	</td>
+		                        	<td> {{ $score }} <small><font style="color: #19ccce;"> {{ get_comment($name,$score) }} </font></small></td>
 		                        </tr>
 		                        @endif
 		                    @endforeach
@@ -52,8 +54,8 @@
 		                    	<td> {{ $distance }}</td>
 		                    </tr>
 		                    <tr>
-		                    	<td><b>Points Score</b> <small>(using the CCECSTA)</small></td>
-		                    	<td><b>{{ calculate_single_hospital_point($hospital->id) }}</b></td>
+		                    	<td><b>Cost Effectiveness Score</b> <small></small></td>
+		                    	<td><b>{{ calculate_single_hospital_point_with_distace($hospital->id,$distance) }}</b></td>
 		                    </tr>
 		                </table>
 	                </div>

@@ -130,19 +130,21 @@ function distance_points($current_village,$preferred_screening_village,$current_
     $current_subcounty_id = $current_subcounty->subcounty_id;
     $current_county = \App\Subcounty::where(['id' => $current_subcounty_id])->first();
     $current_county_id = $current_county->county_id;
-    $current_district = \App\county::where(['id' => $current_county_id])->first();
-    $current_district_id = $current_county->district_id;
+    $current_districtz = \App\county::where(['id' => $current_county_id])->first();
+    $current_districtz_id = $current_county->district_id;
     $currentsubregion = \App\District::findOrFail($current_district);
     $current_subregion = isset($currentsubregion->sub_region)?$currentsubregion->sub_region:"";
 
+    //dd($current_district.' '.$preferred_district);
+
     if ($current_parish_id == $preferred_parish_id) {
-        return 5;
+        return 4;
     } 
     else if($current_subcounty_id == $preferred_subcounty_id){
-        return 4;
+        return 3;
     }
     else if($current_county_id == $preferred_county_id){
-        return 3;
+        return 2;
     }
     else if($current_district == $preferred_district){
         return 2;
@@ -155,11 +157,99 @@ function distance_points($current_village,$preferred_screening_village,$current_
     }    
 }
 
-function calculate_distance_parameter_score($destination,$current)
+function get_comment($parameter,$score)
 {
-    //if destination subregion == current subregion then distance will score 4
-    //if destination subregion(west_1) != current subregion(west_2) then distance will score be 3
-    //if destination subregion(west_1) != current subregion(west_3) then distance will score be 2  
-    //bordering districts of each different sub region can get a score of 5
+    if ($parameter == "time_waiting") {
+        if ($score == 5) {
+            return "(1-30 mins)";
+        }
+        elseif ($score == 4) {
+            return "(1-60 mins)";
+        }
+        elseif ($score == 3) {
+            return "(61-120 mins)";
+        }
+        elseif ($score == 2) {
+            return "(121-180 mins)";
+        }
+        elseif ($score == 1) {
+            return "(181-240 mins)";
+        }
+        elseif ($score == 0) {
+            return "(>240 mins)";
+        }
+    }
+
+    if ($parameter == "cost_of_service") {
+        if ($score == 5) {
+            return "(< 0 Shs)";
+        }
+        elseif ($score == 4) {
+            return "(1-100,000 Shs)";
+        }
+        elseif ($score == 3) {
+            return "(110,000-200,000 Shs)";
+        }
+        elseif ($score == 2) {
+            return "(210,000-300,000 Shs)";
+        }
+        elseif ($score == 1) {
+            return "(310,000-400,000 Shs)";
+        }
+        elseif ($score == 0) {
+            return "(>=410,000 Shs)";
+        }
+    }
+
+    if ($parameter == "user_fee") {
+        if ($score == 5) {
+            return "(< 0 Shs)";
+        }
+        elseif ($score == 4) {
+            return "(1-5000 Shs)";
+        }
+        elseif ($score == 3) {
+            return "(5001-20000 Shs)";
+        }
+        elseif ($score == 2) {
+            return "(20001-35000 Shs)";
+        }
+        elseif ($score == 1) {
+            return "(35001-50000 Shs)";
+        }
+        elseif ($score == 0) {
+            return "(>50000 Shs)";
+        }
+    }
+
+    if ($parameter == "counselling_services" || $parameter == "patient_follow_up") {
+        if ($score == 5) {
+            return "(Yes)";
+        }
+        elseif ($score == 0) {
+            return "(No)";
+        }
+    }
+
+    /*if ($parameter == "treatment_equipment_in_use" || $parameter == "treatment_equipment_available"  || $parameter == "testing_equipment_in_use" || $parameter == "testing_equipment_available" || $parameter == "screening_tools_in_use" || $parameter == "screening_tools_available" || $parameter == "screening_tools_in_use" || $parameter == "trained_manpower" || $parameter == "number_of_treatment_methods") {
+        if ($score == 5) {
+            return "(>= 80%)";
+        }
+        elseif ($score == 4) {
+            return "(61-80%)";
+        }
+        elseif ($score == 3) {
+            return "(41-60%)";
+        }
+        elseif ($score == 2) {
+            return "(20-40%)";
+        }
+        elseif ($score == 1) {
+            return "(1-20%)";
+        }
+        elseif ($score == 0) {
+            return "(<= 0%)";
+        }
+    }*/
 }
 ?>
