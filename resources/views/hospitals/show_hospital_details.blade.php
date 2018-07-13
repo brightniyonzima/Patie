@@ -11,7 +11,7 @@
                         	<div class="col-md-4" style="margin-top: 1.5em;">
                         		<figure class="media-left">
 		                            <p class="image is-96x96">
-		                                <img src="/images/hospital.png" style="max-width: 100%;max-height: 100%">
+		                                <img src="/images/near-view.jpg" style="max-width: 100%;max-height: 100%">
 		                            </p>
 		                        </figure>
                         	</div>
@@ -124,8 +124,8 @@
 	    padding: 1.25rem;
 	}
 	.image.is-96x96 {
-	    height: 96px;
-	    width: 96px;
+	    height: 150px;
+	    width: 180px;
 	}
 	.level img {
     display: inline-block;

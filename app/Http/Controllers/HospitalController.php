@@ -200,7 +200,6 @@ class HospitalController extends Controller
         //1.select all hospitals in the preferred area e.g HealthUnit::where(['location'=>preferred_location]) list them in score order
         //2.add distance points in accordance with how far from the current location e.g if same dist=5,sub_region=3
         //3.suggest near by hospitals with a good score basing hospitals in that same district or sub region
-        //dd($hospitals_in_preferred_area);
         $hospitals_array = [];
         $hospitals_score_array = [];
         foreach ($hospitals_in_preferred_area as $hospital) {
@@ -226,10 +225,25 @@ class HospitalController extends Controller
         $hospitals = HealthUnit::orderBy('name','asc')->get();
         $hospitals_array = [];
         $hospitals_score_array = [];
+        $arranged_scores_array = [];
         foreach ($hospitals as $hospital) {
             $hospitals_array[] = $hospital->name;
             $hospitals_score_array[] = calculate_single_hospital_point($hospital->id);
         }
+
+        for ($i=0; $i < count($hospitals_score_array) ; $i++) { 
+            if ($i!=0) {
+                //if its not the first item in array, then do the following if stmt
+                if ($hospitals_score_array[$i] < $hospitals_score_array[$i-1]) {
+                    $position = count($arranged_scores_array) - 1;
+                    array_splice($arranged_scores_array, $position, 0, $hospitals_score_array[$i]);//put current item before prev
+                }
+                else{
+                    $arranged_scores_array[] = $hospitals_score_array[$i];
+                }
+            }
+        }
+        //dd($arranged_scores_array);
         return view('hospitals.ccecsta_results_column_graph',compact('hospitals_array','hospitals_score_array'));
     }
     /*

@@ -25,13 +25,13 @@ class DistrictsTableSeeder extends Seeder
             ['id' => '12', 'name' => 'Rubirizi', 'sub_region'=> 'west_2', 'region' => 'west'],
             ['id' => '13', 'name' => 'Kirihura', 'sub_region'=> 'west_2', 'region' => 'west'],
             ['id' => '14', 'name' => 'Sheema', 'sub_region'=> 'west_2', 'region' => 'west'],
-            ['id' => '19', 'name' => 'Buhweju', 'sub_region'=> 'west_2', 'region' => 'west'],
-            ['id' => '20', 'name' => 'Kyegegwa', 'sub_region'=> 'west_1', 'region' => 'west'],
-            ['id' => '21', 'name' => 'Kisoro', 'sub_region'=> 'west_3', 'region' => 'west'],
-            ['id' => '29', 'name' => 'Kagadi', 'sub_region'=> 'west_1', 'region' => 'west'],
-            ['id' => '30', 'name' => 'kamwengye', 'sub_region'=> 'west_1', 'region' => 'west'],
-            ['id' => '32', 'name' => 'Kabarole', 'sub_region'=> 'west_1', 'region' => 'west'],
-            ['id' => '33', 'name' => 'Kyenjojo', 'sub_region'=> 'west_1', 'region' => 'west']
+            ['id' => '15', 'name' => 'Buhweju', 'sub_region'=> 'west_2', 'region' => 'west'],
+            ['id' => '16', 'name' => 'Kyegegwa', 'sub_region'=> 'west_1', 'region' => 'west'],
+            ['id' => '17', 'name' => 'Kisoro', 'sub_region'=> 'west_3', 'region' => 'west'],
+            ['id' => '18', 'name' => 'Kagadi', 'sub_region'=> 'west_1', 'region' => 'west'],
+            ['id' => '19', 'name' => 'kamwengye', 'sub_region'=> 'west_1', 'region' => 'west'],
+            ['id' => '20', 'name' => 'Kabarole', 'sub_region'=> 'west_1', 'region' => 'west'],
+            ['id' => '21', 'name' => 'Kyenjojo', 'sub_region'=> 'west_1', 'region' => 'west']
         ];
 
         foreach ($districts as $district):
